@@ -1,4 +1,4 @@
 data class ReportComment (
-    val reason: Int,
-    val comment: Comment
+    val comment: Comment,
+    val reason: Int
         )

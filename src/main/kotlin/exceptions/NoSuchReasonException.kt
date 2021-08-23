@@ -1,4 +1,3 @@
 package exceptions
 
-class NoSuchReasonException: RuntimeException() {
-}
+class NoSuchReasonException: RuntimeException()

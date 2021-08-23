@@ -59,7 +59,7 @@ class WallService {
 
         for (commentInArray in comments) {
             if(commentInArray.id == comment.id) {
-                val reportedComment = ReportComment(reason, commentInArray)
+                val reportedComment = ReportComment(commentInArray, reason)
                 reportedComments += reportedComment
                 return reportedComments.last()
             }

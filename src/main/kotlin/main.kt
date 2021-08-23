@@ -29,4 +29,6 @@ fun main() {
     wallService.createComment(comment2)
 
     wallService.reportComment(comment2, 2)
+
+    wallService.showAttachments()
 }

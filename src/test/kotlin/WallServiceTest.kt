@@ -56,4 +56,40 @@ internal class WallServiceTest {
         assertEquals(wallService.createComment(comment), comment)
     }
 
+    @Test(expected = NoSuchReasonException::class)
+    fun reportComment_reasonException() {
+        val comment = Comment(1, 1, text = "тест")
+        val wallService = WallService()
+        val post =  Post(text = "тест")
+
+        wallService.add(post)
+        wallService.createComment(comment)
+        wallService.reportComment(comment, 12)
+    }
+
+    @Test(expected = CommentNotFoundException::class)
+    fun reportComment_commentException() {
+        val comment1 = Comment(1, 1, text = "тест")
+        val comment2 = Comment(2, 1, text = "тест")
+        val wallService = WallService()
+        val post =  Post(text = "тест")
+
+        wallService.add(post)
+        wallService.createComment(comment1)
+        wallService.reportComment(comment2, 4)
+    }
+
+    @Test
+    fun reportComment() {
+        val comment = Comment(1, 1, text = "тест")
+        val wallService = WallService()
+        val post =  Post(text = "тест")
+
+        wallService.add(post)
+        wallService.createComment(comment)
+        val reportComment = ReportComment(comment, 4)
+
+        assertEquals(wallService.reportComment(comment, 4), reportComment)
+    }
+
 }
