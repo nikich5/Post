@@ -10,7 +10,7 @@ internal class WallServiceTest {
 
         val addedPost = wallService.add(post)
 
-        assert(addedPost.id != 0)
+        assertTrue(addedPost.id != 0)
     }
 
     @Test
