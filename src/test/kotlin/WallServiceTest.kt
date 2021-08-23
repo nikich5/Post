@@ -1,3 +1,4 @@
+import exceptions.*
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -32,6 +33,27 @@ internal class WallServiceTest {
         val result = wallService.update(post)
 
         assertFalse(result)
-
     }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createComment_errorResult() {
+        val post = Post(text = "тест")
+        val comment = Comment(1, 2, text = "тест")
+        val wallService = WallService()
+
+        wallService.add(post)
+        wallService.createComment(comment)
+    }
+
+    @Test
+    fun createComment() {
+        val post = Post(text = "тест")
+        val comment = Comment(1, 1, text = "тест")
+        val wallService = WallService()
+
+        wallService.add(post)
+
+        assertEquals(wallService.createComment(comment), comment)
+    }
+
 }
