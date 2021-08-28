@@ -31,4 +31,27 @@ fun main() {
     wallService.reportComment(comment2, 2)
 
     wallService.showAttachments()
+
+    val noteService = NoteService()
+
+
+    noteService.addNote("Заголовок", "Текст")
+    noteService.addNote("Второй заголовок", "Второй текст")
+
+    noteService.getNotes()
+    noteService.getNote(2)
+
+    noteService.createComment(1, "Комментарий")
+    noteService.createComment(1, "Второй комментарий")
+    noteService.createComment(1, "Третий комментарий")
+    noteService.createComment(2, "Комментарий")
+
+    noteService.deleteNote(2)
+    noteService.deleteComment(3)
+
+    noteService.editNote(1, "Новый заголовок", "Новый текст")
+    noteService.editComment(2, "Новый комментарий")
+
+    noteService.restoreComment(3)
+    println(noteService.getComments(1))
 }
